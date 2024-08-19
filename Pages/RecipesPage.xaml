@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalendarApp.Pages.RecipesPage"
+             Title="Recept"
+             Padding="30">
+
+    <ContentPage.BackgroundColor>
+        <Color>lightgray</Color>
+    </ContentPage.BackgroundColor>
+
+    <ScrollView>
+        <StackLayout>
+
+        <Entry 
+            Placeholder="Skriv in maträtt" 
+            Text="{Binding SearchQuery}" 
+            TextColor="Black"
+            FontSize="20"
+            BackgroundColor="White"
+            Keyboard="Text"
+            Margin="0,0,0,10"/>
+
+
+        <Button 
+            Text="Hämta Recept" 
+            Command="{Binding FetchRecipesCommand}" 
+            BackgroundColor="LightBlue" 
+            TextColor="Black"
+            Margin="0,0,0,10"/>
+
+
+        <CollectionView ItemsSource="{Binding Recipes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BorderColor="LightGray"
+                        CornerRadius="10"
+                        Margin="0,0,0,10"
+                        Padding="10"
+                        HasShadow="True">
+                        <StackLayout>
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="20"
+                                BackgroundColor="Gray"
+                                FontAttributes="Bold"
+                                Margin="0,0,0,5"/>
+                            <Label
+                                Text="{Binding Ingredients}"
+                                TextColor="Black"
+                                BackgroundColor="White"
+                                FontSize="16"
+                                 LineBreakMode="WordWrap"
+                                Margin="0,0,0,5"/>
+                                <ScrollView HeightRequest="100">
+                                    <Label
+                                        Text="{Binding Instructions}"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"/>
+                                </ScrollView>
+
+                            </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </StackLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<StackLayout Padding="10" Spacing="20">
+         
+        <Entry
+            Placeholder="Skriv in maträtt..."
+            Text="{Binding SearchQuery}"
+            Margin="0,0,0,10" />
+
+         
+        <Button
+            Text="Hämta"
+            Command="{Binding FetchRecipesCommand}"
+            Margin="0,0,0,10" />
+
+         
+        <ListView ItemsSource="{Binding Recipes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding Title}"
+                        Detail="{Binding Instructions}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
+
+
+
+
+
+
+
+
+
+
+    <!--<StackLayout Padding="10" Spacing="10">
+        --><!-- ListView för att visa recepten --><!--
+        <ListView ItemsSource="{Binding Recipes}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding LoadRecipesCommand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Spacing="5" Orientation="Vertical">
+                            <Label Text="{Binding Title}" 
+                                   FontSize="20" 
+                                   FontAttributes="Bold" 
+                                   TextColor="Black"/>
+                            <Label Text="{Binding Servings}" 
+                                   FontSize="16" 
+                                   TextColor="Gray"/>
+                            <Label Text="{Binding Ingredients}" 
+                                   FontSize="14"/>
+                            <Label Text="{Binding Instructions}" 
+                                   FontSize="14" 
+                                   LineBreakMode="WordWrap"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
+
+
+
+
+
+
+    <!--<StackLayout>
+        <ListView ItemsSource="{Binding Recipes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>-->
+
+
+
+    <!--<VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>-->
+</ContentPage>

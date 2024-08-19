@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:CalendarApp.ViewModels"
+             x:Class="CalendarApp.Pages.CalendarPage"
+             Title="CalendarPage">
+
+
+
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <Entry 
+                Text="{Binding NewEvent.Description}" 
+                Placeholder="Beskrivning av händelse"/>
+
+
+            <DatePicker 
+                Date="{Binding NewEvent.Date}" />
+
+
+            <TimePicker 
+                Time="{Binding NewEvent.Time}" />
+
+
+            <Button 
+                Text="Lägg till händelse" 
+                Command="{Binding AddEventCommand}" />
+
+            <!-- Lista för att visa händelser -->
+            <ListView 
+                ItemsSource="{Binding Events}"
+                SelectionMode="Single"
+                ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+
+                                <Label 
+                                    Text="{Binding DescriptionWithDateTime}" 
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand" />
+
+
+                                <Button 
+                                    Text="Ta bort"
+                                    Command="{Binding BindingContext.RemoveEventCommand, Source={x:Reference Page}}"
+                                    CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <!--<TextCell 
+                            Text="{Binding Description}" 
+                            Detail="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"/>-->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>
